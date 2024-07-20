@@ -1,0 +1,6 @@
+{
+    "model_path": "model/voting.joblib",
+    "raw_data_csv_path": "data/raw/house_rent_data.csv",
+    "clean_data_path": "data/clean/data.joblib",
+    "clean_data_csv_path": "data/clean/data.csv"
+}
