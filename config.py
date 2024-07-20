@@ -14,4 +14,5 @@ class Config:
             raise KeyError(f"Path '{key}' not found in configuration")
         return os.path.join(self.project_root, self._config[key])
 
+
 config = Config()

@@ -17,7 +17,36 @@ def append_city(district, selected_city):
     return district + f' ({selected_city})'
 
 
+def customize_theme():
+    custom_css = """
+        <style>
+            html, body, [class*="css"]  {
+                font-size: 20px !important;
+            }
+
+            h1 {
+                font-size: 34px !important;
+            }
+            h2 {
+                font-size: 26px !important;
+            }
+            h3 {
+                font-size: 24px !important;
+            }
+            p {
+                font-size: 22px !important;
+            }
+            div {
+                font-size: 20px !important;
+            }
+        </style>
+    """
+    st.markdown(custom_css, unsafe_allow_html=True)
+
+
 def main(model, df):
+
+    customize_theme()
 
     user_selections = {
         'Поверх': None,
@@ -33,7 +62,13 @@ def main(model, df):
         'Працює ліфт': None,
     }
 
-    st.title('Тайтл')
+    st.write(
+        "<h1 style='text-align: center;'>" +
+        "Цей застосунок допоможе вам оцінити приблизну вартість оренди квартири на основі " +
+        "введених вами параметрів " +
+        "</h1>",
+        unsafe_allow_html=True
+    )
 
     # City dropdown
     city_options = df['Місто'].unique().tolist()
@@ -84,16 +119,17 @@ def main(model, df):
     # Total area
     user_selections['Загальна площа'] = st.number_input(
         'Загальна площа (м²): ',
-        min_value=0.0,
-        step=0.01,
+        min_value=1.0,
+        step=0.5,
         placeholder=""
     )
 
     # Kitchen area
     user_selections['Площа кухні'] = st.number_input(
         'Площа кухні (м²): ',
-        min_value=0.0,
-        step=0.01,
+        min_value=1.0,
+        max_value=user_selections['Загальна площа'] if user_selections['Загальна площа'] else None,
+        step=0.5,
         placeholder=""
     )
 
@@ -143,10 +179,15 @@ def main(model, df):
     user_selections['Підключене резервне живлення'] = 1 if user_selections['Підключене резервне живлення'] == 'Так' else 0
 
     # Show predicted price
-    if st.button('Вирахувати орієнтовну ціну'):
+    st.write('<br>', unsafe_allow_html=True)
+    _, center_col, _ = st.columns([1, 3, 1])
+    if center_col.button('Вирахувати ціну', use_container_width=True):
         prediction = model.predict(pd.DataFrame([user_selections]))
         price = np.exp(prediction)[0]
-        st.title(f"Орієнтовна ціна: {round_to_hundred(price)} грн")
+        st.write(
+            ("<h1 style='text-align: center;'>Орієнтовна ціна: %s грн</h1>" % round_to_hundred(price)),
+            unsafe_allow_html=True
+        )
 
 
 if __name__ == '__main__':
