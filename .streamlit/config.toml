@@ -1,7 +1,3 @@
-[server]
-
-requirementsFile = "requirements_app.txt"
-
 [theme]
 
 primaryColor="#12435e"
