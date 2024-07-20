@@ -44,7 +44,13 @@ def customize_theme():
     st.markdown(custom_css, unsafe_allow_html=True)
 
 
-def main(model, df):
+def app_run():
+
+    with open(config.get_path('model_path'), 'rb') as file:
+        model = joblib.load(file)
+
+    with open(config.get_path('clean_data_path'), 'rb') as file:
+        df = joblib.load(file)
 
     customize_theme()
 
@@ -188,15 +194,3 @@ def main(model, df):
             ("<h1 style='text-align: center;'>Орієнтовна ціна: %s грн</h1>" % round_to_hundred(price)),
             unsafe_allow_html=True
         )
-
-
-if __name__ == '__main__':
-
-    with open(config.get_path('model_path'), 'rb') as file:
-        model = joblib.load(file)
-
-    with open(config.get_path('clean_data_path'), 'rb') as file:
-        df = joblib.load(file)
-
-    if model and (df is not None):
-        main(model, df)
