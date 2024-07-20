@@ -1,4 +1,9 @@
+[server]
+
+requirementsFile = "requirements_app.txt"
+
 [theme]
+
 primaryColor="#12435e"
 backgroundColor="#fffff0"
 secondaryBackgroundColor="#aee2fb"
