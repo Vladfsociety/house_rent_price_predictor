@@ -1,5 +1,5 @@
 # House rent price predictor
-#### This repository contains a machine learning project aimed at predicting house rent prices based on various features. The model is created and tested in a Jupyter notebook, ensuring a thorough and interactive analysis.
+This repository contains a machine learning project aimed at predicting house rent prices based on various features. The model is created and tested in a Jupyter notebook, ensuring a thorough and interactive analysis.
 ## Project Structure
 ```
 house_rent_price_predictor/
