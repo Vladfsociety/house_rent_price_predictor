@@ -1,5 +1,5 @@
 # House rent price predictor
-This repository contains a machine learning project aimed at predicting house rent prices based on various features. The model is created and tested in a Jupyter notebook, ensuring a thorough and interactive analysis.
+This repository contains a machine learning project aimed at predicting house rent prices based on various features. The model is created and tested in a Jupyter notebook, ensuring a thorough and interactive analysis. Link to the web application: https://ukrainianhouserentpricepredictor.streamlit.app/ 
 ## Project Structure
 ```
 house_rent_price_predictor/
@@ -28,7 +28,7 @@ house_rent_price_predictor/
 ├── config.py                             # Script for loading dataset/model files
 ├── requirements.txt                      # List of dependencies required to run the project application
 ├── requirements_dev.txt                  # List of dependencies required to run the project for development
-├── setup.py                              # Defines how to build, install, and distribute for Python project 
+└── setup.py                              # Defines how to build, install, and distribute for Python project 
 ```
 ## Installation
 #### To get started with the project, follow these steps:
