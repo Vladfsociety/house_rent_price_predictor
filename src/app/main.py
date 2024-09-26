@@ -43,16 +43,24 @@ def customize_theme():
     """
     st.markdown(custom_css, unsafe_allow_html=True)
 
+@st.cache_resource(ttl='1d')
+def load_dataset():
+    with open(config.get_path('clean_data_path'), 'rb') as file:
+        df = joblib.load(file)
+    return df
+
+@st.cache_resource(ttl='1d')
+def load_model():
+    with open(config.get_path('model_path'), 'rb') as file:
+        model = joblib.load(file)
+    return model
 
 def app_run():
 
-    with open(config.get_path('model_path'), 'rb') as file:
-        model = joblib.load(file)
-
-    with open(config.get_path('clean_data_path'), 'rb') as file:
-        df = joblib.load(file)
-
     customize_theme()
+
+    model = load_model()
+    df = load_dataset()
 
     user_selections = {
         'Поверх': None,
