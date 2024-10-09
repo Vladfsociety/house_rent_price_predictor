@@ -1,5 +1,5 @@
 # House rent price predictor
-This repository contains a machine learning project aimed at predicting house rent prices based on various features. The model is created and tested in a Jupyter notebook, ensuring a thorough and interactive analysis. Link to the web application: https://ukrainianhouserentpricepredictor.streamlit.app/ 
+This repository contains a machine learning project aimed at predicting house rent prices based on various features. The model is created and tested in a Jupyter notebook, ensuring a thorough and interactive analysis. The final model is presented as a Voting Regressor, which consists of a Lasso, Extra Trees, Gradient Boosting Regressor, and XGBoost Regressor. Link to the web application: https://ukrainianhouserentpricepredictor.streamlit.app/ 
 ## Project Structure
 ```
 house_rent_price_predictor/
